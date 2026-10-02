@@ -17,8 +17,11 @@ const importData  = async () => {
         await Product.deleteMany({})
         await User.deleteMany({})
 
-        const createdUsers = await User.insertMany(users)
-        const adminUser = createdUsers[0]._id
+        // Insert users with their fixed _ids (needed so product reviews reference valid user IDs)
+        await User.insertMany(users)
+
+        // The seeder user (admin) is users[0]; products already embed user references via fixed IDs
+        const adminUser = users[0]._id
 
         const sampleProducts = products.map(product => {
             return { ...product, user: adminUser }

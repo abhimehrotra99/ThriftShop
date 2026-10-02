@@ -14,6 +14,7 @@ const ProductScreen = ({ history, match }) => {
     const [qty, setQty] = useState(1)
     const [rating, setRating] = useState(0)
     const [comment, setComment] = useState('')
+    const [reviewSuccess, setReviewSuccess] = useState(false)
 
     const dispatch = useDispatch()
 
@@ -29,7 +30,7 @@ const ProductScreen = ({ history, match }) => {
 
     useEffect(() => {
         if(successReviewCreate) {
-            alert('Review Submitted!')
+            setReviewSuccess(true)
             setRating(0)
             setComment('')
             dispatch({ type: PRODUCT_CREATE_REVIEW_RESET })
@@ -68,13 +69,13 @@ const ProductScreen = ({ history, match }) => {
                                         <h3>{product.name}</h3>
                                     </ListGroup.Item>
                                     <ListGroup.Item>
-                                        <Rating value={product.rating} text={`${product.numReviews} reviews`} />
+                                        <Rating value={product.rating} text={`${product.numReviews} review${product.numReviews !== 1 ? 's' : ''}`} />
                                     </ListGroup.Item>
                                     <ListGroup.Item>
                                         Price: ${product.price}
                                     </ListGroup.Item>
                                     <ListGroup.Item>
-                                        Description: ${product.description}
+                                        Description: {product.description}
                                     </ListGroup.Item>
                                 </ListGroup>
                             </Col>
@@ -137,13 +138,14 @@ const ProductScreen = ({ history, match }) => {
                                     {product.reviews.map(review => (
                                         <ListGroup.Item key={review._id}>
                                             <strong>{review.name}</strong>
-                                            <Rating value={review.rating} />
-                                            <p>{review.createdAt.substring(0, 10)}</p>
+                                            <Rating value={review.rating} text='' />
+                                            <p>{review.createdAt ? review.createdAt.substring(0, 10) : ''}</p>
                                             <p>{review.comment}</p>
                                         </ListGroup.Item>
                                     ))}
                                     <ListGroup.Item>
                                         <h2>Write a Customer Review</h2>
+                                        {reviewSuccess && <Message variant='success'>Review submitted successfully!</Message>}
                                         {errorReviewCreate && <Message variant='danger'>{errorReviewCreate}</Message>}
                                         {userInfo ? (
                                             <Form onSubmit={submitHandler}>
