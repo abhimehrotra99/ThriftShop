@@ -34,9 +34,9 @@ const HomeScreen = ({ match }) => {
                 : error 
                 ? <Message variant='danger'>{error}</Message> 
                 : <>
-                    <Row>
+                    <Row className="align-items-stretch">
                         {products.map(product => (
-                            <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+                            <Col key={product._id} sm={12} md={6} lg={4} xl={3} className="d-flex mb-4">
                                 <Product product={product} />
                             </Col>
                         ))}

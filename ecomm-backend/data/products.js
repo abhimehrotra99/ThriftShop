@@ -1,3 +1,6 @@
+import mongoose from 'mongoose'
+import { johnId, janeId, adminId } from './users.js'
+
 const products = [
   {
     name: 'Airpods Wireless Bluetooth Headphones',
@@ -9,7 +12,27 @@ const products = [
     price: 89.99,
     countInStock: 10,
     rating: 4.5,
-    numReviews: 12,
+    numReviews: 2,
+    reviews: [
+      {
+        _id: new mongoose.Types.ObjectId(),
+        name: 'John Doe',
+        rating: 5,
+        comment: 'Amazing sound quality and the connection is super stable. Worth every penny!',
+        user: new mongoose.Types.ObjectId(johnId),
+        createdAt: new Date('2024-03-10'),
+        updatedAt: new Date('2024-03-10'),
+      },
+      {
+        _id: new mongoose.Types.ObjectId(),
+        name: 'Jane Doe',
+        rating: 4,
+        comment: 'Great headphones but the case feels a bit cheap. Audio quality is top notch though.',
+        user: new mongoose.Types.ObjectId(janeId),
+        createdAt: new Date('2024-04-02'),
+        updatedAt: new Date('2024-04-02'),
+      },
+    ],
   },
   {
     name: 'iPhone 11 Pro 256GB Memory',
@@ -21,7 +44,27 @@ const products = [
     price: 599.99,
     countInStock: 7,
     rating: 4.0,
-    numReviews: 8,
+    numReviews: 2,
+    reviews: [
+      {
+        _id: new mongoose.Types.ObjectId(),
+        name: 'Admin User',
+        rating: 4,
+        comment: 'Excellent build quality and camera performance. Battery could be better but overall a fantastic phone.',
+        user: new mongoose.Types.ObjectId(adminId),
+        createdAt: new Date('2024-01-15'),
+        updatedAt: new Date('2024-01-15'),
+      },
+      {
+        _id: new mongoose.Types.ObjectId(),
+        name: 'John Doe',
+        rating: 4,
+        comment: 'Great phone, the triple camera is really impressive. Slightly pricey but worth it.',
+        user: new mongoose.Types.ObjectId(johnId),
+        createdAt: new Date('2024-02-20'),
+        updatedAt: new Date('2024-02-20'),
+      },
+    ],
   },
   {
     name: 'Cannon EOS 80D DSLR Camera',
@@ -33,7 +76,27 @@ const products = [
     price: 929.99,
     countInStock: 5,
     rating: 3,
-    numReviews: 12,
+    numReviews: 2,
+    reviews: [
+      {
+        _id: new mongoose.Types.ObjectId(),
+        name: 'Jane Doe',
+        rating: 3,
+        comment: 'Decent camera but very bulky. Image quality is good but the autofocus can be slow in low light.',
+        user: new mongoose.Types.ObjectId(janeId),
+        createdAt: new Date('2024-05-01'),
+        updatedAt: new Date('2024-05-01'),
+      },
+      {
+        _id: new mongoose.Types.ObjectId(),
+        name: 'John Doe',
+        rating: 3,
+        comment: 'Average for the price. There are better mirrorless options now. Good for beginners though.',
+        user: new mongoose.Types.ObjectId(johnId),
+        createdAt: new Date('2024-05-18'),
+        updatedAt: new Date('2024-05-18'),
+      },
+    ],
   },
   {
     name: 'Sony Playstation 4 Pro White Version',
@@ -45,7 +108,27 @@ const products = [
     price: 399.99,
     countInStock: 11,
     rating: 5,
-    numReviews: 12,
+    numReviews: 2,
+    reviews: [
+      {
+        _id: new mongoose.Types.ObjectId(),
+        name: 'Admin User',
+        rating: 5,
+        comment: 'Absolute beast of a console. 4K gaming is stunning and the exclusive titles are unmatched.',
+        user: new mongoose.Types.ObjectId(adminId),
+        createdAt: new Date('2024-06-05'),
+        updatedAt: new Date('2024-06-05'),
+      },
+      {
+        _id: new mongoose.Types.ObjectId(),
+        name: 'Jane Doe',
+        rating: 5,
+        comment: 'Best gaming experience I have had. The white edition looks gorgeous too!',
+        user: new mongoose.Types.ObjectId(janeId),
+        createdAt: new Date('2024-06-22'),
+        updatedAt: new Date('2024-06-22'),
+      },
+    ],
   },
   {
     name: 'Logitech G-Series Gaming Mouse',
@@ -57,7 +140,27 @@ const products = [
     price: 49.99,
     countInStock: 7,
     rating: 3.5,
-    numReviews: 10,
+    numReviews: 2,
+    reviews: [
+      {
+        _id: new mongoose.Types.ObjectId(),
+        name: 'John Doe',
+        rating: 4,
+        comment: 'Solid mouse for the price. RGB lighting is great and the buttons feel responsive.',
+        user: new mongoose.Types.ObjectId(johnId),
+        createdAt: new Date('2024-07-10'),
+        updatedAt: new Date('2024-07-10'),
+      },
+      {
+        _id: new mongoose.Types.ObjectId(),
+        name: 'Admin User',
+        rating: 3,
+        comment: 'Good build but the software for customisation is a bit clunky. Gets the job done for gaming.',
+        user: new mongoose.Types.ObjectId(adminId),
+        createdAt: new Date('2024-07-25'),
+        updatedAt: new Date('2024-07-25'),
+      },
+    ],
   },
   {
     name: 'Amazon Echo Dot 3rd Generation',
@@ -69,7 +172,27 @@ const products = [
     price: 29.99,
     countInStock: 0,
     rating: 4,
-    numReviews: 12,
+    numReviews: 2,
+    reviews: [
+      {
+        _id: new mongoose.Types.ObjectId(),
+        name: 'Jane Doe',
+        rating: 4,
+        comment: 'Great little smart speaker! Alexa is super responsive and it fits perfectly on my nightstand.',
+        user: new mongoose.Types.ObjectId(janeId),
+        createdAt: new Date('2024-08-01'),
+        updatedAt: new Date('2024-08-01'),
+      },
+      {
+        _id: new mongoose.Types.ObjectId(),
+        name: 'John Doe',
+        rating: 4,
+        comment: 'Brilliant value for money. Sound is decent for the size and Alexa integration works great.',
+        user: new mongoose.Types.ObjectId(johnId),
+        createdAt: new Date('2024-08-15'),
+        updatedAt: new Date('2024-08-15'),
+      },
+    ],
   },
 ]
 
